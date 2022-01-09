@@ -15,21 +15,33 @@ class _ClockMainState extends State<ClockMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(() => Container(
-            color: clock.currentsec.isEven ? Colors.blueGrey : Colors.black54,
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+      body: Obx(() => Center(
+        child: Container(
+              // color: clock.currentsec.isEven ? Colors.blueGrey : Colors.black54,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)), //here
+              color: Theme.of(context).primaryColor,
+              boxShadow: [
+                BoxShadow(
+                    color: Theme.of(context).primaryColor,
+                    offset: Offset(0, -5),
+                    blurRadius: 10.0)
+              ]),
+              width: MediaQuery.of(context).size.width/3,
+              height: MediaQuery.of(context).size.height/4,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Text(
-                  '${clock.systemhour}:${clock.systemmin}:${clock.systemsec}',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50, fontStyle: FontStyle.italic),
-                ),
-              ],
+                  Text(
+                    '${clock.systemhour}:${clock.systemmin}:${clock.systemsec}',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50, fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
             ),
-          )),
+      )),
     );
   }
 }
